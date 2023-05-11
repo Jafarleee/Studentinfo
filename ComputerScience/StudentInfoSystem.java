@@ -24,9 +24,16 @@ public class StudentInfoSystem {
             System.out.print("Enter the number of subject: ");
             int numSubject = scanner.nextInt();
             scanner.nextLine();
-            Subject[] subjects = new Subject[numSubject];
+            System.out.print("E-mail: ");
+            String email = scanner.nextLine();
+            System.out.print("Adress: ");
+            String adress = scanner.nextLine();
+            System.out.print("Phone: ");
+            String phone = scanner.nextLine();
 
-            for (int j = 0; j < subjects.length; j++) {
+            students[i] = new Student(name, id, major, email, adress, phone,numSubject);
+
+            for (int j = 0; j < students[i].mysubjects.length; j++) {
                 System.out.print("Enter the Subject " + (j + 1) + ": ");
                 String subjectname = scanner.nextLine();
                 System.out.print("Enter the Quiz score(between 0 and 10):");
@@ -84,20 +91,15 @@ public class StudentInfoSystem {
                         }
                     }
                 }
-                subjects[j] = new Subject(subjectname, subjectquiz, subjectmidterm, subjectproject, subjectfinalexam);
-                if (subjects[j].getEntryPoint() < 51 || subjects[j].getFinalexam() < 23) {
-                    System.out.println("Student is failed from " + subjects[j].getName());
+                students[i].mysubjects[j] = new Subject(subjectname, subjectquiz, subjectmidterm, subjectproject, subjectfinalexam);
+                if (students[i].mysubjects[j].getGeneralPoint() < 51 || students[i].mysubjects[j].getFinalexam() < 23) {
+                    System.out.println("Student is failed from " + students[i].mysubjects[j].getName());
                 }
             }
 
-            System.out.print("E-mail: ");
-            String email = scanner.nextLine();
-            System.out.print("Adress: ");
-            String adress = scanner.nextLine();
-            System.out.print("Phone: ");
-            String phone = scanner.nextLine();
 
-            students[i] = new Student(name, id, major, email, adress, phone);
+
+
 
         }
 
@@ -109,9 +111,33 @@ public class StudentInfoSystem {
             System.out.println("E-mail: " + students[i].getEmail());
             System.out.println("Adress: " + students[i].getAddress());
             System.out.println("Phone: " + students[i].getPhone());
+            for (int j=0;j<students[i].mysubjects.length;j++){
+                System.out.println("Subject #"+(j+1)+" Name: " + students[i].mysubjects[j].getName() +"   Grade:"+StudentInfoSystem.printGrade(students[i].mysubjects[j].getGeneralPoint()));
+            }
             
         }
 
+
+
         scanner.close();
     }
+
+    public static String printGrade(int score){
+            if(score>=91) {
+                return "A";
+             }
+            if(score>=81){
+                return "B";
+            }
+            if(score>=71){
+                return "C";
+            }
+            if(score>=61){
+                return "D";
+            }
+            if(score>=51){
+                return "E";
+            }
+            return "F";
+        }
 }

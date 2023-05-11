@@ -56,13 +56,13 @@ public class Subject {
         this.finalexam = finalexam;
     }
 
-    public void setEntryPoint(int quiz,int midterm,int project,int finalexam){
+    public void setGeneralPoint(int quiz,int midterm,int project,int finalexam){
         this.midterm=midterm;
         this.quiz=quiz;
         this.project=project;
         this.finalexam=finalexam;
     }
-    public int getEntryPoint(){
+    public int getGeneralPoint(){
         return (midterm+quiz+project+finalexam);
     }
    

@@ -8,14 +8,17 @@ class Student {
     private String address;
     private String phone;
 
-    public Student(String name, int id, String major, String email, String adress, String phone ) {
+    public Subject[] mysubjects;
+
+    public Student(String name, int id, String major, String email, String adress, String phone, int numberofsubject ) {
         this.name = name;
         this.id = id;
         this.major = major;
         this.email=email;
         this.address=adress;
         this.phone=phone;
-        
+        mysubjects=new Subject[numberofsubject];
+
     }
 
     // Getter methods
